@@ -1,5 +1,7 @@
 export interface CompanyConfig {
   name: string;
+  subtitle: string;
+  logo: string;
   tagline: string;
   shortDescription: string;
   whatsappNumber: string; // e.g. 919847012345
@@ -30,12 +32,14 @@ export interface CompanyConfig {
 
 export const COMPANY_CONFIG: CompanyConfig = {
   name: "Event Perambra",
+  subtitle: "Wedding & Stage Decoration",
+  logo: "/logo.png",
   tagline: "Turning Your Special Moments Into Beautiful Memories",
   shortDescription: "Elegant stage decorations and unforgettable event setups, thoughtfully designed for your special day in Perambra, Kozhikode, and across Malabar.",
-  whatsappNumber: "919847123456",
-  displayWhatsapp: "+91 98471 23456",
-  phone: "+919847123456",
-  displayPhone: "+91 98471 23456",
+  whatsappNumber: "9048680098",
+  displayWhatsapp: "9048680098",
+  phone: "+9048680098",
+  displayPhone: "9048680098",
   email: "connect@eventperambra.com",
   address: {
     street: "Main Road, Near Town Hall",
@@ -76,6 +80,9 @@ export function getWhatsAppUrl(params?: {
   customMessage?: string;
   eventDate?: string;
   venue?: string;
+  pageUrl?: string;
+  itemUrl?: string;
+  url?: string;
 }): string {
   const number = COMPANY_CONFIG.whatsappNumber;
 
@@ -83,10 +90,14 @@ export function getWhatsAppUrl(params?: {
   if (params?.customMessage) {
     message = params.customMessage;
   } else if (params?.decorationName) {
+    const detailUrl = params.pageUrl || params.itemUrl || params.url;
     message = `Hello ${COMPANY_CONFIG.name},
 I was browsing your website and fell in love with the “${params.decorationName}”${params.category ? ` (${params.category})` : ""}.
 
 Could you please share more details, setup availability, and customizable options for this design?`;
+    if (detailUrl) {
+      message += `\n\nProduct Details URL:\n${detailUrl}`;
+    }
     if (params.eventDate) {
       message += `\n\nEvent Date: ${params.eventDate}`;
     }
@@ -101,9 +112,15 @@ I'm planning an upcoming event and would love to consult with your stage decorat
   return `https://wa.me/${number}?text=${encodeURIComponent(message.trim())}`;
 }
 
-export function getShortlistWhatsAppUrl(savedDecorations: Array<{ name: string; category: string }>): string {
+export function getShortlistWhatsAppUrl(savedDecorations: Array<{ name: string; category: string; id?: string }>): string {
   const number = COMPANY_CONFIG.whatsappNumber;
-  const listText = savedDecorations.map((d, i) => `${i + 1}. ${d.name} (${d.category})`).join("\n");
+  const baseUrl = typeof window !== "undefined" ? window.location.origin : "";
+  const listText = savedDecorations
+    .map((d, i) => {
+      const link = d.id && baseUrl ? `\n   Link: ${baseUrl}/decorations/${d.id}` : "";
+      return `${i + 1}. ${d.name} (${d.category})${link}`;
+    })
+    .join("\n");
 
   const message = `Hello ${COMPANY_CONFIG.name},
 I have shortlisted the following stage decoration designs on your website for my upcoming celebration:

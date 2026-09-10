@@ -15,9 +15,15 @@ export const DecorationCard: React.FC<DecorationCardProps> = ({ decoration, prio
   const { isSaved, toggleSave } = useSavedDecorations();
   const saved = isSaved(decoration.id);
 
+  const itemUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/decorations/${decoration.id}`
+      : `/decorations/${decoration.id}`;
+
   const whatsappLink = getWhatsAppUrl({
     decorationName: decoration.name,
     category: decoration.category,
+    pageUrl: itemUrl,
   });
 
   return (

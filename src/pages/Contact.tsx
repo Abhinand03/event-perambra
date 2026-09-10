@@ -139,9 +139,23 @@ Could you please connect with me to discuss available stage packages and custom 
           {/* Right: Contact Information & Office Details */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#ECE6DC] shadow-2xs space-y-6">
-              <h3 className="font-serif-luxury text-xl font-bold text-[#1C1917]">
-                Office & Studio
-              </h3>
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-full overflow-hidden bg-black border border-[#C5A880]/50 shadow-xs shrink-0 flex items-center justify-center">
+                  <img
+                    src={COMPANY_CONFIG.logo}
+                    alt={COMPANY_CONFIG.name}
+                    className="w-full h-full object-cover scale-135"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-serif-luxury text-xl font-bold text-[#1C1917] leading-tight">
+                    Office & Studio
+                  </h3>
+                  <span className="text-[10px] tracking-widest uppercase text-[#8C7A6B] font-medium block mt-0.5">
+                    {COMPANY_CONFIG.name} • Perambra
+                  </span>
+                </div>
+              </div>
 
               <div className="space-y-4 text-xs sm:text-sm text-[#57534E]">
                 <div className="flex items-start gap-3">

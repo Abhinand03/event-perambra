@@ -57,9 +57,15 @@ export const DecorationDetails: React.FC = () => {
 
   const saved = isSaved(decoration.id);
 
+  const pageUrl =
+    typeof window !== "undefined"
+      ? (window.location.origin ? `${window.location.origin}/decorations/${decoration.id}` : window.location.href)
+      : `/decorations/${decoration.id}`;
+
   const whatsappUrl = getWhatsAppUrl({
     decorationName: decoration.name,
     category: decoration.category,
+    pageUrl,
   });
 
   const handleShare = async () => {

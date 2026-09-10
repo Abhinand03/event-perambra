@@ -79,18 +79,22 @@ export const Header: React.FC = () => {
           {/* Brand Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-3 group"
             id="brand-logo-link"
           >
-            <div className="w-10 h-10 rounded-full bg-[#1C1917] text-[#C5A880] flex items-center justify-center shadow-xs border border-[#C5A880]/30 group-hover:scale-105 transition-transform">
-              <Sparkles className="w-5 h-5 text-[#D4AF37]" />
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden bg-black border border-[#C5A880]/50 shadow-sm flex items-center justify-center shrink-0 group-hover:scale-105 group-hover:border-[#D4AF37] transition-all">
+              <img
+                src={COMPANY_CONFIG.logo}
+                alt={COMPANY_CONFIG.name}
+                className="w-full h-full object-cover scale-135"
+              />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif-luxury text-xl sm:text-2xl font-bold tracking-tight text-[#1C1917] leading-none">
+              <span className="font-serif-luxury text-xl sm:text-2xl font-bold tracking-tight text-[#1C1917] leading-none group-hover:text-[#937443] transition-colors">
                 {COMPANY_CONFIG.name}
               </span>
-              <span className="text-[10px] tracking-widest uppercase text-[#8C7A6B] font-medium mt-0.5">
-                Stage Decor & Events
+              <span className="text-[10px] tracking-widest uppercase text-[#8C7A6B] font-medium mt-1">
+                {COMPANY_CONFIG.subtitle}
               </span>
             </div>
           </Link>
@@ -175,6 +179,25 @@ export const Header: React.FC = () => {
             transition={{ duration: 0.2 }}
             className="md:hidden bg-[#FAF8F5] border-b border-[#E8E2D9] px-4 pt-3 pb-6 shadow-md overflow-hidden"
           >
+            {/* Mobile Drawer Brand Header */}
+            <div className="flex items-center gap-3 px-3 py-2.5 mb-3 bg-[#F2ECE4] rounded-2xl border border-[#E8E2D9]">
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-black border border-[#C5A880]/50 shadow-xs shrink-0 flex items-center justify-center">
+                <img
+                  src={COMPANY_CONFIG.logo}
+                  alt={COMPANY_CONFIG.name}
+                  className="w-full h-full object-cover scale-135"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-serif-luxury text-base font-bold text-[#1C1917] leading-tight">
+                  {COMPANY_CONFIG.name}
+                </span>
+                <span className="text-[9px] tracking-widest uppercase text-[#8C7A6B] font-medium mt-0.5">
+                  {COMPANY_CONFIG.subtitle}
+                </span>
+              </div>
+            </div>
+
             <nav className="flex flex-col space-y-1 font-sans-clean">
               {navLinks.map((link) => {
                 const isActive = location.pathname === link.path;

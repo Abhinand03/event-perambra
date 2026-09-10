@@ -24,6 +24,22 @@ export const Hero: React.FC = () => {
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+        {/* Brand Logo Emblem */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.05 }}
+          className="mb-5"
+        >
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-black/85 backdrop-blur-md border-2 border-[#C5A880]/70 shadow-2xl p-0.5 mx-auto hover:scale-105 transition-transform duration-300">
+            <img
+              src={COMPANY_CONFIG.logo}
+              alt={COMPANY_CONFIG.name}
+              className="w-full h-full object-cover rounded-full scale-135"
+            />
+          </div>
+        </motion.div>
+
         {/* Subtle Brand Eyebrow Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}

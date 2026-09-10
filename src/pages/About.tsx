@@ -10,6 +10,13 @@ export const About: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Hero Narrative */}
         <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-24">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-6 rounded-full overflow-hidden bg-black border-2 border-[#C5A880]/60 shadow-xl p-0.5 flex items-center justify-center">
+            <img
+              src={COMPANY_CONFIG.logo}
+              alt={COMPANY_CONFIG.name}
+              className="w-full h-full object-cover rounded-full scale-135"
+            />
+          </div>
           <span className="text-xs font-semibold uppercase tracking-widest text-[#937443]">
             Our Story & Heritage
           </span>

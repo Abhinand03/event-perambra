@@ -10,13 +10,22 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 pb-12 border-b border-[#2E2925]">
           {/* Brand Col */}
           <div className="space-y-4 lg:col-span-1">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full bg-[#FAF8F5] text-[#1C1917] flex items-center justify-center">
-                <Sparkles className="w-4.5 h-4.5 text-[#937443]" />
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-black border border-[#C5A880]/60 shadow-lg flex items-center justify-center shrink-0">
+                <img
+                  src={COMPANY_CONFIG.logo}
+                  alt={COMPANY_CONFIG.name}
+                  className="w-full h-full object-cover scale-135"
+                />
               </div>
-              <span className="font-serif-luxury text-2xl font-bold tracking-tight">
-                {COMPANY_CONFIG.name}
-              </span>
+              <div className="flex flex-col">
+                <span className="font-serif-luxury text-2xl font-bold tracking-tight text-[#FAF8F5] leading-none">
+                  {COMPANY_CONFIG.name}
+                </span>
+                <span className="text-[10px] tracking-widest uppercase text-[#D4AF37] font-medium mt-1">
+                  {COMPANY_CONFIG.subtitle}
+                </span>
+              </div>
             </div>
             <p className="text-xs sm:text-sm text-[#A8A29E] leading-relaxed">
               Creating beautiful spaces for unforgettable moments. Thoughtful stage styling, mandap architecture, and bespoke event setups across Kerala.
@@ -135,7 +144,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Copyright & Disclaimer */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#78716C]">
-          <p>© {new Date().getFullYear()} {COMPANY_CONFIG.name}. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {COMPANY_CONFIG.name} — {COMPANY_CONFIG.subtitle}. All rights reserved.</p>
           <p className="flex items-center gap-1 text-[#A8A29E]">
             Thoughtfully crafted for celebrations in God’s Own Country
           </p>

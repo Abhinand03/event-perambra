@@ -34,12 +34,16 @@ export const SavedModal: React.FC = () => {
         >
           {/* Drawer Header */}
           <div className="px-6 py-5 border-b border-[#E8E2D9] flex items-center justify-between bg-white">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#FAF3EA] text-[#C2410C] flex items-center justify-center">
-                <Heart className="w-4 h-4 fill-[#C2410C]" />
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-black border border-[#C5A880]/50 shadow-xs flex items-center justify-center shrink-0">
+                <img
+                  src={COMPANY_CONFIG.logo}
+                  alt={COMPANY_CONFIG.name}
+                  className="w-full h-full object-cover scale-135"
+                />
               </div>
               <div>
-                <h3 className="font-serif-luxury text-lg font-bold text-[#1C1917]">
+                <h3 className="font-serif-luxury text-lg font-bold text-[#1C1917] leading-tight">
                   Your Shortlisted Designs
                 </h3>
                 <p className="text-xs text-[#78716C]">
